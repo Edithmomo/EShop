@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/Demo.css">
+</head>
+<body>
+	<div class="con3">
+		<div class="head">
+			<img alt="" src="img/s.png">
+			<div class="div1">
+				<table>
+					<tr>
+						<td><input id="qKey" name="qKey" value="商品关键字"></td>
+						<td><select id="category">
+								<option value="0">所有商品</option>
+								<option value="1">计算机类</option>
+								<option value="2">管理类</option>
+								<option value="3">英语类</option>
+								<option value="4">小说类</option>
+								<option value="5">玄幻类</option>
+						</select></td>
+						<td><button class="bu1"></button></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="menu">
+			<img alt="" src="img/icon02.gif" class="img1">
+			<div class="test">
+				<ol>
+					<li class="nav"><a href="main.html" class="nn">商城首页</a></li>
+					<li class="nav"><a href="#" class="nn">购物车管理</a></li>
+					<li class="nav"><a href="#" class="nn">订单管理</a></li>
+					<li class="nav"><a href="message.html" class="nn">顾客留言</a></li>
+					<li class="nav"><a href="changeZiLiao.html" class="nn">修改注册资料</a></li>
+				</ol>
+			</div>
+			<img alt="" src="img/icon07.gif" class="img2">
+		</div>
+         <div class="X_center">
+         <div class="X_center01"> <img alt="" src="img/EditUser_01.gif"> </div>
+     <form action="mem.do?method=updateMember" style="margin:0px;" method="post" onSubmit="return CheckForm.Check(this,2)">             	
+	<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+      <tr>
+        <td height="30" colspan="2">&nbsp;</td>
+      </tr>
+      <tr bgcolor="#F7F3F7">
+        <td width="260" height="26" class="text" align="right">会员级别
+          ：</td>
+        <td height="26" class="text">普通会员</td>
+      </tr>
+      <tr bgcolor="#F7F3F7">
+        <td width="260" height="26" class="text" align="right">真实姓名
+          ：</td>
+        <td height="26"><input type="text" name="memberName" size="30" class="textBox" value="张三" require="true" dataType="Require" msg="真实姓名不能为空!"/></td>
+      </tr>
+      <tr bgcolor="#F7F3F7">
+        <td width="260" height="26" class="text" align="right">登录帐号
+          ：</td>
+        <td height="26"><input type="text" name="loginName" size="30" class="textBox" value="zhangsan" require="true" dataType="Require" msg="登录名不能为空!"/></td>
+      </tr>
+      <tr bgcolor="#F7F3F7">
+        <td width="260" height="26" class="text" align="right">登录密码
+          ：</td>
+        <td height="26"><input type="password" name="loginPwd" size="30" class="textBox"/></td>
+      </tr>
+      <tr bgcolor="#F7F3F7">
+        <td width="260" height="26" class="text" align="right">核对密码	
+          ：</td>
+        <td height="26"><input name="password" type="password" class="textBox" id="reLoginPwd" onBlur="checkPwd()" size="30"/></td>
+      </tr>
+      <tr bgcolor="#F7F3F7">
+        <td width="260" height="26" class="text" align="right">联系电话
+          ：</td>
+        <td height="26"><input type="text" name="phone" size="30" class="textBox" value="13756305180" require="true" dataType="Phone" msg="联系电话不正确!"/></td>
+      </tr>
+      <tr bgcolor="#F7F3F7">
+        <td width="260" height="26" class="text" align="right">联系地址
+          ：</td>
+        <td height="26"><input type="text" name="address" size="30" class="textBox" value="长春硅谷大街硅谷大厦921" require="true" dataType="Require" msg="联系地址不能为空!"/></td>
+      </tr>
+      <tr bgcolor="#F7F3F7">
+        <td width="260" height="26" class="text" align="right">邮政编码
+          ：</td>
+        <td height="26"><input type="text" name="zip" size="30" class="textBox" value="130000" require="true" dataType="Zip" msg="邮政编码不正确!"/></td>
+      </tr>
+      <tr bgcolor="#F7F3F7">
+        <td width="260" height="26" class="text" align="right">电子邮箱
+          ：</td>
+        <td height="26"><input type="text" name="email" size="30" class="textBox" value="syswjb@126.com" require="false" dataType="Email" msg="电子邮箱不正确!"/></td>
+      </tr>
+      <tr>
+        <td height="40" colspan="2" align="center">
+			<input class="C_Input" type="submit" value="保存"/>
+	   </td>
+      </tr>
+    </table>
+	</form> 
+         </div>
+         <div class="f">
+			<p>版权所有：长春优尼克斯软件有限公司 项目经理：于洋</p>
+		</div>
+         </div>		
+		
+</body>
+</html>

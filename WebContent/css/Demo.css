@@ -1,0 +1,449 @@
+@CHARSET "UTF-8";
+
+body {
+	background-color: #EEEEEE;
+}
+
+.container {
+	width: 780px;
+	/* height: 770px; */
+	margin-left: 300px;
+	margin-right: 300px;
+	padding-bottom: 10px;
+	float: left;
+	border: 1px solid gray;
+	background-color: white;
+}
+
+.con {
+	width: 780px;
+	/* height: 1550px; */
+	margin-left: 300px;
+	margin-right: 300px;
+	margin-bottom: 10px;
+	padding-bottom: 20px;
+	float: left;
+	border: 1px solid gray;
+	background-color: white;
+}
+
+.con2 {
+	width: 780px;
+	height: 1650px;
+	margin-left: 300px;
+	margin-right: 300px;
+	float: left;
+	border: 1px solid gray;
+	background-color: white;
+}
+
+.con3 {
+	width: 780px;
+	height: 570px;
+	margin-left: 300px;
+	margin-right: 300px;
+	float: left;
+	border: 1px solid gray;
+	background-color: white;
+}
+
+.head {
+	width: 100%;
+	height: 70px;
+	float: left;
+}
+
+.center {
+	width: 100%;
+	height: 630px;
+	float: left;
+}
+
+.zuo {
+	width: 220px;
+	height: 600px;
+	float: left;
+}
+
+.zuo1 {
+	width: 200px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	height: 200px;
+	float: left;
+	border: 1px solid gray;
+}
+
+#zuo001 {
+	/* 	width:100px;
+	height:35px; */
+	margin-top: 10px;
+	background-image: url('../img/icon06.gif');
+}
+
+.in1 {
+	margin-top: 10px;
+	width: 80px;
+	height: 15px;
+}
+
+.in2 {
+	margin-top: 15px;
+	width: 80px;
+	height: 15px;
+}
+
+.bb1 {
+	width: 74px;
+	height: 23px;
+	margin-top: 10px;
+	margin-left: 8px;
+	background-image: url("../img/button.gif");
+	border: none;
+	background-color: transparent;
+	background-repeat: no-repeat;
+}
+
+.bb11 {
+	width: 74px;
+	height: 23px;
+	margin-top: 10px;
+	margin-left: 8px;
+	background-image: url("../img/button2.gif");
+	border: none;
+	background-color: transparent;
+	background-repeat: no-repeat;
+}
+
+.zuo2 {
+	width: 200px;
+	margin-left: 10px;
+	margin-right: 10px;
+	height: 300px;
+	float: left;
+	border: 1px solid gray;
+}
+
+.back {
+	list-style-type: square;
+	list-style-image: url("../img/cateIcon.gif");
+}
+
+.aa {
+	top: 1px;
+	text-decoration: none;
+	color: black;
+	float: left;
+	font-size: 10px;
+}
+
+.aa:HOVER {
+	color: red;
+	top: 3px;
+}
+
+.you {
+	width: 550px;
+	height: 100%;
+	float: left;
+	margin-top: 10px;
+}
+
+.you1 {
+	width: 100%;
+	height: 300px;
+	float: left;
+}
+
+.b3 {
+	width: 50px;
+	height: 17px;
+	margin-left: 400px;
+}
+
+.div4 {
+	width: 540px;
+	height: 30px;
+	margin: 5px;
+	border: 1px solid gray;
+}
+
+.div5 {
+	width: 540px;
+	height: 4px;
+	background-color: #4380CC;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.div6 {
+	width: 170px;
+	padding: 2px;
+	height: 240px;
+	float: left;
+	margin: 3px;
+}
+
+.bb2 {
+	width: 94px;
+	height: 25px;
+}
+
+.bb3 {
+	width: 64px;
+	height: 25px;
+}
+
+.you2 {
+	width: 100%;
+	height: 300px;
+	float: left;
+}
+
+.head img {
+	margin-left: 400px;
+	margin-top: 25px;
+	float: left;
+}
+
+.div1 {
+	width: 100px;
+	height: 40px;
+	margin-top: 30px;
+	float: left;
+}
+
+.bu1 {
+	width:44px;
+	height:22px;
+background-image: url("../img/icon_search.gif");	
+}
+
+.menu {
+	width: 750px;
+	height: 36px;
+	margin-left: 30px;
+	margin-right: 30px;
+	float: left;
+}
+
+.test {
+	width: 700px;
+	height: 36px;
+	background-image: url("../img/header_menu_02.gif");
+	float: left;
+}
+
+.img1 {
+	width: 10px;
+	height: 100%;
+	float: left;
+}
+
+.img2 {
+	width: 10px;
+	height: 100%;
+	float: left;
+}
+
+.img3 {
+	z-index: 999999999;
+	overflow: visible;
+}
+
+.nav {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	margin-top: 0px;
+	position: relative;
+}
+
+.nav .nn {
+	text-decoration: none;
+	margin-left: 30px;
+	line-height: 10px;
+	color: white;
+	float: left;
+	font-size: 18px;
+}
+
+.footer {
+	margin-top: 0px;
+	width: 740px;
+	height: 30px;
+	margin-left: 20px;
+	margin-right: 20px;
+	background-color: #4282CE;
+	float: left;
+	width: 740px;
+}
+
+p {
+	margin: 3px;
+	font-size: 10px;
+	text-align: center;
+	color: white;
+	text-align: center;
+}
+
+.pp {
+	padding-top: 10px;
+	font-size: 12px;
+	text-align: center;
+	color: white;
+	font: bold;
+}
+
+.X_center {
+	width: 750px;
+	height: 430px;
+	margin-left: 30px;
+	margin-right: 30px;
+	float: left;
+}
+
+.X_center01 {
+	width: 750px;
+	height: 40px;
+	margin-top: 10px;
+	float: left;
+}
+
+.G_center {
+	width: 720px;
+/* 	height: 90%; */
+	margin-top: 10px;
+	margin-left: 30px;
+	margin-right: 30px;
+	float: left;
+}
+
+.G_center2 {
+	width: 720px;
+	height: 91%;
+	margin-top: 10px;
+	margin-left: 30px;
+	margin-right: 30px;
+	float: left;
+}
+
+.G_center01 {
+	width: 720px;
+	height: 35px;
+	float: left;
+	padding-top: 5px;
+	margin-top: 10px;
+	border: 1px solid gray;
+}
+
+.blackTitle {
+	font-family: "宋体", System;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 20px;
+	color: #000000;
+	text-decoration: none;
+}
+/* 蓝色链接样式 */
+.blueText {
+	font-family: "宋体", System;
+	font-size: 12px;
+	line-height: 20px;
+	color: #0033CC;
+	text-decoration: none;
+}
+/* 普通文字样式 */
+.text {
+	font-family: "宋体", System;
+	font-size: 12px;
+	line-height: 20px;
+	color: #000000;
+	text-decoration: none;
+}
+
+.f {
+	width: 740px;
+	height: 30px;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	background-color: #4282CE;
+	float: left;
+	width: 740px;
+}
+
+.textBox {
+	border-bottom: 1px;
+	border-left: 1px;
+	border-right: 1px;
+	border-top: 1px;
+	border-color: #666666;
+	border-style: solid;
+}
+
+.C_Carbg_Default {
+	background: url(../img/Car_21.gif) no-repeat center;
+	font-size: 12px;
+	text-align: center;
+	width: 150px;
+}
+
+.C_Carbg_Current {
+	background: url(../img/Car_18.gif) no-repeat center;
+	font-size: 12px;
+	text-align: center;
+	color: #fff;
+	width: 150px;
+}
+
+.C_Input {
+	background: url(../img/button2.gif) no-repeat;
+	width: 73px;
+	height: 23px;
+	border: 0px;
+	cursor: hand;
+	color: #333;
+}
+/* 超级链接样式 */
+a:link {
+	color: #000000;
+	text-decoration: none
+}
+
+a:visited {
+	color: #000000;
+	text-decoration: none
+}
+
+a:active {
+	color: #000000;
+	text-decoration: none
+}
+
+a:hover {
+	color: #ff0000;
+	text-decoration: none;
+	position: relative;
+	right: 0px;
+	top: 1px
+}
+.bookImg{
+	height:123px;
+	width: 126px;
+}
+.bookNamebox{
+	width:126px;
+	margin-left: 22px;
+	overflow: hidden;
+}
+.bookName{
+	width:126px;
+	display:inline;
+	white-space: nowrap;
+}
+.buyBtn{
+	margin-top:20px;
+}
