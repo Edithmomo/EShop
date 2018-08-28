@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.ccunix.eshop.dao.MerchandiseDAO;
 import org.ccunix.eshop.model.CastPageModel;
-import org.ccunix.eshop.model.MerchandiseModel;
 /**
  * 查询书籍信息servlet
  * @author Edith
@@ -26,6 +24,10 @@ public class SelectMerchandiseServlet extends HttpServlet{
 		    qkey = new String(bte, "UTF-8");
 		}
 		String category = request.getParameter("category");
+		int intCategory = 0;
+		if(category != null && !"".equals(category)){
+			intCategory = Integer.parseInt(category);
+		}
 		if((qkey == null || qkey == "") && (category == null || category == "")){
 			response.sendRedirect("logOut.html");
 		}else{
@@ -36,7 +38,7 @@ public class SelectMerchandiseServlet extends HttpServlet{
 			if(nowPage==null){
 				nowPage = "1";
 			}
-			CastPageModel castPageModel = new CastPageModel(5, Integer.parseInt(nowPage), qkey, category);
+			CastPageModel castPageModel = new CastPageModel(5, Integer.parseInt(nowPage), qkey, intCategory);
 			castPageModel.makePageSelectData();
 			request.setAttribute("castPage", castPageModel);
 			request.getRequestDispatcher("/selectMerchandise.jsp").forward(request, response);

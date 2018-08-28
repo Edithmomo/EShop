@@ -24,8 +24,8 @@
 							<p class="pp"  style="width: 85%; height: 30px; background: url('${path }/img/icon06.gif') no-repeat;">欢迎登陆</p>
 								<div id="parent">
 									<p style="color: #000;margin-top:10px; text-align:left;">会员名称：${userInfo.memberName }</p>
-									<p style="color: #000;margin-top:10px;text-align:left;">会员等级：${userInfo.levelName }</p>
-									<p style="color: #000;margin-top:10px;text-align:left;">折        扣：${userInfo.favourable }</p>
+									<p style="color: #000;margin-top:10px;text-align:left;">会员等级：${userInfo.memberLevelModel.levelName }</p>
+									<p style="color: #000;margin-top:10px;text-align:left;">折        扣：${userInfo.memberLevelModel.favourable }</p>
 									<p style="color: #000;margin-top:10px;text-align:left;"><a href="exitUser.jsp"> 安全退出 </a></p>
 								</div>
 						<%
@@ -112,9 +112,9 @@
 							src="${path }/img/icon_more.gif"></a>
 					</div>
 					<div class="div5"></div>
-					<jsp:useBean id="merchandiseDAO" class="org.ccunix.eshop.dao.MerchandiseDAO"></jsp:useBean>
+					<jsp:useBean id="merchandiseDAO" class="org.ccunix.eshop.dao.MerchandiseDAOByHibernate"></jsp:useBean>
 					<%
-						List<MerchandiseModel> merchandiseList = merchandiseDAO.getMerchandiseListBySpecial("1");
+						List<MerchandiseModel> merchandiseList = merchandiseDAO.getMerchandiseListBySpecial(1);
 						if (merchandiseList.size() > 0) {
 							int specialBook = 3;
 							for (MerchandiseModel mer : merchandiseList) {
@@ -160,7 +160,7 @@
 					<div class="div5"></div>
 					<%
 						int newBook = 3;
-						merchandiseList = merchandiseDAO.getMerchandiseListBySpecial("0");
+						merchandiseList = merchandiseDAO.getMerchandiseListBySpecial(0);
 						for (MerchandiseModel mer : merchandiseList) {
 							if (mer.getSpecial() == 0 && newBook > 0) {
 								pageContext.setAttribute("mer", mer);

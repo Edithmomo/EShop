@@ -50,12 +50,12 @@ public class MerchandiseModel {
 	/**
 	 * 是否为特价
 	 */
-	private int Special;
+	private int special;
 	/**
 	 * 书籍目录名
 	 */
 	private String cateName;
-	
+	private CategoryModel categoryModel;
 	public MerchandiseModel(){}
 	
 	public MerchandiseModel(int id, int category, String merName, double price,
@@ -71,7 +71,7 @@ public class MerchandiseModel {
 		this.merDesc = merDesc;
 		this.manufacturer = manufacturer;
 		this.leaveFactoryDate = leaveFactoryDate;
-		Special = special;
+		this.special = special;
 	}
     
 	public MerchandiseModel(int id, int category, String merName, double price,
@@ -88,7 +88,7 @@ public class MerchandiseModel {
 		this.merDesc = merDesc;
 		this.manufacturer = manufacturer;
 		this.leaveFactoryDate = leaveFactoryDate;
-		Special = special;
+		this.special = special;
 		this.cateName = cateName;
 	}
 
@@ -173,11 +173,11 @@ public class MerchandiseModel {
 	}
 
 	public int getSpecial() {
-		return Special;
+		return special;
 	}
 
 	public void setSpecial(int special) {
-		Special = special;
+		this.special = special;
 	}
 
 	public String getCateName() {
@@ -188,6 +188,12 @@ public class MerchandiseModel {
 		this.cateName = cateName;
 	}
 	
-	
+	public CategoryModel getCategoryModel() {
+		return categoryModel;
+	}
+
+	public void setCategoryModel(CategoryModel categoryModel) {
+		this.categoryModel = categoryModel;
+	}
 	
 }

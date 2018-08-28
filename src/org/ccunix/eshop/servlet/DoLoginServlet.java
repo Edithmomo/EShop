@@ -1,7 +1,6 @@
 package org.ccunix.eshop.servlet;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -11,15 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.ccunix.eshop.dao.CartDAO;
-import org.ccunix.eshop.dao.CartSelectedmerDAO;
-import org.ccunix.eshop.dao.MemberDAO;
-import org.ccunix.eshop.dao.MerchandiseDAO;
+import org.ccunix.eshop.dao.CartDAOByHibernateImpl;
+import org.ccunix.eshop.dao.CartDAOIface;
+import org.ccunix.eshop.dao.CartSelectedmerDAOByHibernateImpl;
+import org.ccunix.eshop.dao.CartSelectedmerDAOInface;
+import org.ccunix.eshop.dao.MemberDAOByHibernateImpl;
+import org.ccunix.eshop.dao.MemberDAOIface;
 import org.ccunix.eshop.model.CartModel;
 import org.ccunix.eshop.model.CartSelectedmerModel;
 import org.ccunix.eshop.model.MemberModel;
-import org.ccunix.eshop.model.MerchandiseModel;
+
 import com.alibaba.fastjson.JSONObject;
+
 /**
  * 登录servlet
  */
@@ -34,7 +36,7 @@ public class DoLoginServlet extends HttpServlet{
 		}
 		String password = request.getParameter("password");
 		String remember = request.getParameter("remember");
-		MemberDAO memberDAO = new MemberDAO();
+		MemberDAOIface memberDAO = new MemberDAOByHibernateImpl();
 		MemberModel memberModel = memberDAO.getMemberInfo(username,password);
 		response.setCharacterEncoding("UTF-8");
 		if(memberModel != null){
@@ -64,49 +66,20 @@ public class DoLoginServlet extends HttpServlet{
 					}
 				}
 			}
-			CartDAO cartDAO = new CartDAO();
+			CartDAOIface cartDAO = new CartDAOByHibernateImpl();
 			CartModel cartModel = cartDAO.isExistCart(memberModel.getId());
 			if(cartModel == null){
 				cartModel = cartDAO.addCart(memberModel.getId());
 			}else{
-				CartSelectedmerDAO cartSelectedmerDAO = new CartSelectedmerDAO();
+				CartSelectedmerDAOInface cartSelectedmerDAO = new CartSelectedmerDAOByHibernateImpl();
 				Map<Integer, CartSelectedmerModel> map = cartSelectedmerDAO.getCartSelectedmerMap(cartModel.getId());
 				cartModel.setCartSelectedmerMap(map);
 			}
 			HttpSession session = request.getSession(true);
 			session.setAttribute("userInfo", memberModel);
 			session.setAttribute("cartModel", cartModel);
+			System.out.println(memberModel.getLoginName()+"  " + memberModel.getLevelName());
 			response.getWriter().write(JSONObject.toJSONString(memberModel));
 		}
 	}
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//MerchandiseDAO merchandiseDAO =new MerchandiseDAO();
-//List<MerchandiseModel> merchandiseModels = merchandiseDAO.getMerchandiseList();
-//JSONArray jsonArray = new JSONArray();
-//for(MerchandiseModel m : merchandiseModels){
-//	JSONObject jsonObject = new JSONObject();
-//	jsonObject.put("MerName", m.getMerName());
-//	jsonObject.put("LeaveFactoryDate", m.getLeaveFactoryDate());
-//	jsonArray.add(jsonObject);
-//}
-//
-//response.setCharacterEncoding("UTF-8");
-//response.getWriter().write(jsonArray.toString());

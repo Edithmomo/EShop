@@ -22,7 +22,7 @@
 					  CastPageModel castPageModel =  (CastPageModel)obj_castPage;
 					  pageContext.setAttribute("castPageModel", castPageModel);
 					  for (CategoryModel cate : categoryList) {
-						  if(cate.getId() == Integer.parseInt(castPageModel.getCategory())){
+						  if(cate.getId() == castPageModel.getCategory()){
 							  pageContext.setAttribute("selectCateName", cate.getCateName());
 							  break;
 						  }

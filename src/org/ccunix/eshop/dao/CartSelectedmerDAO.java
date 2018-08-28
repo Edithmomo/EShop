@@ -16,7 +16,7 @@ public class CartSelectedmerDAO {
 	 * @param cartId 购物车id
 	 * @return 商品集合
 	 */
-	public Map<Integer, CartSelectedmerModel> getCartSelectedmerMap(int cartId) {
+	public Map<Integer, CartSelectedmerModel> getCartSelectedmerMap1(int cartId) {
 		Map<Integer, CartSelectedmerModel> cartSelectedmerMap = new HashMap<Integer, CartSelectedmerModel>();
 		Connection connection = null;
 		PreparedStatement ps = null;

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="org.ccunix.eshop.model.CategoryModel" table="Category">
+  <id name="id" column="ID" type="int"></id>
+  <property name="cateName" column="cateName" type="string"></property>
+  <property name="cateDesc" column="cateDesc" type="string"></property>
+ </class>
+</hibernate-mapping>

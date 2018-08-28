@@ -1,3 +1,4 @@
+<%@page import="org.ccunix.eshop.model.CartSelectedmerModel"%>
 <%@page import="org.ccunix.eshop.model.CartModel"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@include file="header.jsp" %>
@@ -55,14 +56,14 @@
 		                    <tr class="merSelect" class="text" align="center" bgcolor="#FFFFFF">
 								<td>
 									&nbsp;<a href="mer.do?method=showMer&id=${cs.value.merchandise}" target="_blank"> 
-									          <span class="blueText">${cs.value.merName}</span>
+									          <span class="blueText">${cs.value.merchandiseModel.merName}</span>
 									     </a>
 								</td>
-								<td>￥${cs.value.merPrice}</td>
+								<td>￥${cs.value.merchandiseModel.price}</td>
 								<td>￥<span id="price81">${cs.value.cartSelectedMerPrice}</span></td>
-								<td><input type="text" class="textBox" onChange="modiNum(this.value,${cs.value.id },${cs.value.cart })" value="${cs.value.number }" size="4"/></td>
+								<td><input type="text" class="textBox" onChange="modiNum(this.value,${cs.value.merchandise },${cs.value.cart })" value="${cs.value.number }" size="4"/></td>
 								<td>￥<span id="money81">${cs.value.cartSelectedMerMoney}</span></td>
-								<td><input onClick="deleteCart(${cs.value.id },${cs.value.cart })" type="image" src="${path }/img/delete_01.gif" border="0"/></td>
+								<td><input onClick="deleteCart(${cs.value.merchandise },${cs.value.cart })" type="image" src="${path }/img/delete_01.gif" border="0"/></td>
 						    </tr>
 		               </c:forEach>
            		      <% 
@@ -75,8 +76,8 @@
                </tr>	
         </table>
         <div style="margin-left: 300px;">
-        <input type="image" src="${path }/img/Car_icon_01.gif" style="BORDER: 0px;WIDTH: 126px; HEIGHT: 39px;" onClick="clearCart()">
-			<img style="CURSOR: hand" onClick="continueBuy()" src="${path }/img/Car_icon_02.gif" />
+        <input type="image" src="${path }/img/Car_icon_01.gif" style="BORDER: 0px;WIDTH: 126px; HEIGHT: 39px;" onClick="clearCart(${cartModel.id})">
+			<a href="${path }"><img style="CURSOR: hand" src="${path }/img/Car_icon_02.gif" /></a>
 			<img src="${path }/img/Car_icon_03.gif" onClick="JavaScript:location.href='ConfirmOrder.jsp'" border="0" style="CURSOR: hand"/>
 			</div>
          </div>		

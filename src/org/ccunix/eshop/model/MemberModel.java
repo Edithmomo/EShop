@@ -58,6 +58,9 @@ public class MemberModel {
 	 */
 	private int favourable;
 	
+	private MemberLevelModel memberLevelModel;
+	
+	
 	public MemberModel(){}
 	
 	public MemberModel(int id, int memberlevel, String loginName,
@@ -78,6 +81,28 @@ public class MemberModel {
 		this.email = email;
 	}
 	
+	public MemberModel(int id, int memberlevel, String loginName,
+			String loginPwd, String memberName, String phone, String address,
+			String zip, String regDate, String lastDate, int loginTimes,
+			String email, String levelName, int favourable,
+			MemberLevelModel memberLevelModel) {
+		this.id = id;
+		this.memberlevel = memberlevel;
+		this.loginName = loginName;
+		this.loginPwd = loginPwd;
+		this.memberName = memberName;
+		this.phone = phone;
+		this.address = address;
+		this.zip = zip;
+		this.regDate = regDate;
+		this.lastDate = lastDate;
+		this.loginTimes = loginTimes;
+		this.email = email;
+		this.levelName = levelName;
+		this.favourable = favourable;
+		this.memberLevelModel = memberLevelModel;
+	}
+
 	public MemberModel(int id, int memberlevel, String loginName,
 			String loginPwd, String memberName, String phone, String address,
 			String zip, String regDate, String lastDate, int loginTimes,
@@ -182,4 +207,13 @@ public class MemberModel {
 	public void setFavourable(int favourable) {
 		this.favourable = favourable;
 	}
+
+	public MemberLevelModel getMemberLevelModel() {
+		return memberLevelModel;
+	}
+
+	public void setMemberLevelModel(MemberLevelModel memberLevelModel) {
+		this.memberLevelModel = memberLevelModel;
+	}
+	
 }

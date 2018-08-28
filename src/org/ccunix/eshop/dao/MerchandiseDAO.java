@@ -14,7 +14,7 @@ import org.ccunix.eshop.util.DBManager;
  * @author Edith
  *
  */
-public class MerchandiseDAO {
+public class MerchandiseDAO implements MerchandiseDAOIface{
 	/**
 	 * 查询所以的书籍信息
 	 * @return  书籍集合
@@ -51,7 +51,7 @@ public class MerchandiseDAO {
 	 * @param special 是否为特价    1-是   0-新品
 	 * @return 特价书籍集合或新品书籍集合
 	 */
-	public List<MerchandiseModel> getMerchandiseListBySpecial(String special) {
+	public List<MerchandiseModel> getMerchandiseListBySpecial(int special) {
 		ArrayList<MerchandiseModel> list = new ArrayList<MerchandiseModel>();
 		Connection connection = null;
 		PreparedStatement ps = null;
@@ -59,7 +59,7 @@ public class MerchandiseDAO {
 		try {
 			connection = DBManager.getConnection();
 			ps = connection.prepareStatement(sql);
-			ps.setString(1, special);
+			ps.setInt(1, special);
 			ResultSet set = ps.executeQuery();
 			while (set.next()) {
 				MerchandiseModel merchandiseModel = new MerchandiseModel(
@@ -84,7 +84,7 @@ public class MerchandiseDAO {
 	 * @param id 商品id
 	 * @return 商品信息
 	 */
-	public MerchandiseModel getOneMerchandiseById(String id){
+	public MerchandiseModel getOneMerchandiseById(int id){
 		MerchandiseModel merchandiseModel = null ;
 		Connection connection = null;
 		PreparedStatement ps = null;
@@ -92,7 +92,7 @@ public class MerchandiseDAO {
 		try {
 			connection = DBManager.getConnection();
 			ps = connection.prepareStatement(sql);
-			ps.setString(1, id);
+			ps.setInt(1, id);
 			ResultSet resultSet = ps.executeQuery();
 			if(resultSet.next()){
 				merchandiseModel = new MerchandiseModel(
@@ -118,7 +118,7 @@ public class MerchandiseDAO {
 	 * @param category 书籍目录id
 	 * @return 书籍信息集合
 	 */
-	public List<MerchandiseModel> getMerchandiseListBySelect(String qKey,String category) {
+	public List<MerchandiseModel> getMerchandiseListBySelect(String qKey,int category) {
 		ArrayList<MerchandiseModel> list = new ArrayList<MerchandiseModel>();
 		Connection connection = null;
 		PreparedStatement ps = null;
@@ -126,7 +126,7 @@ public class MerchandiseDAO {
 		try {
 			connection = DBManager.getConnection();
 			ps = connection.prepareStatement(sql);
-			ps.setString(1, category);
+			ps.setInt(1, category);
 			ResultSet set = ps.executeQuery();
 			while (set.next()) {
 				MerchandiseModel merchandiseModel = new MerchandiseModel(
@@ -151,7 +151,7 @@ public class MerchandiseDAO {
 	 * @param category 书籍目录id
 	 * @return 书籍信息集合
 	 */
-	public List<MerchandiseModel> getMerchandiseListByCategory(String category) {
+	public List<MerchandiseModel> getMerchandiseListByCategory(int category) {
 		ArrayList<MerchandiseModel> list = new ArrayList<MerchandiseModel>();
 		Connection connection = null;
 		PreparedStatement ps = null;
@@ -159,7 +159,7 @@ public class MerchandiseDAO {
 		try {
 			connection = DBManager.getConnection();
 			ps = connection.prepareStatement(sql);
-			ps.setString(1, category);
+			ps.setInt (1, category);
 			ResultSet set = ps.executeQuery();
 			while (set.next()) {
 				MerchandiseModel merchandiseModel = new MerchandiseModel(

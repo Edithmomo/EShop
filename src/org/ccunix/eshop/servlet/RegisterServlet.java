@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.ccunix.eshop.dao.MemberDAO;
+import org.ccunix.eshop.dao.MemberDAOByHibernateImpl;
+import org.ccunix.eshop.dao.MemberDAOIface;
 import org.ccunix.eshop.model.MemberModel;
 import org.ccunix.eshop.util.CharacterUtil;
 
@@ -27,7 +29,7 @@ public class RegisterServlet extends HttpServlet{
 		String email = req.getParameter("email");
 		String method = req.getParameter("method");
 		MemberModel memberModel = null;
-		MemberDAO memberDAO = new MemberDAO();
+		MemberDAOIface memberDAO = new MemberDAOByHibernateImpl();
 		boolean flag = false;
 		if(method.equals("register")){
 			System.out.println("注册会员。。。。。。。。。");

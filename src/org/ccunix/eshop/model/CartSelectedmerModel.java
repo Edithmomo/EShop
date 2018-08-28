@@ -41,9 +41,22 @@ public class CartSelectedmerModel {
 	 * 商品类型主键
 	 */
 	private double categroy;
+	/**
+	 * 商品详细信息
+	 */
+	private MerchandiseModel merchandiseModel;
 	
 	public CartSelectedmerModel(){}
 
+	public CartSelectedmerModel(int id, int cart, int merchandise, int number,
+			double cartSelectedMerPrice, double cartSelectedMerMoney) {
+		this.id = id;
+		this.cart = cart;
+		this.merchandise = merchandise;
+		this.number = number;
+		this.cartSelectedMerPrice = cartSelectedMerPrice;
+		this.cartSelectedMerMoney = cartSelectedMerMoney;
+	}
 	public CartSelectedmerModel(int id, int cart, int merchandise, int number,
 			double cartSelectedMerPrice, double cartSelectedMerMoney,
 			String merName, double merPrice, double merSprice, double categroy) {
@@ -137,6 +150,14 @@ public class CartSelectedmerModel {
 
 	public void setCategroy(double categroy) {
 		this.categroy = categroy;
+	}
+
+	public MerchandiseModel getMerchandiseModel() {
+		return merchandiseModel;
+	}
+
+	public void setMerchandiseModel(MerchandiseModel merchandiseModel) {
+		this.merchandiseModel = merchandiseModel;
 	}
 	
 	

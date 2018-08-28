@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import org.ccunix.eshop.model.CartModel;
 import org.ccunix.eshop.util.DBManager;
+import org.hibernate.Session;
 
-public class CartDAO {
+public class CartDAO implements CartDAOIface{
 	/**
 	 * 是否存在未提交的购物车
 	 * @param member 会员id
@@ -68,7 +70,13 @@ public class CartDAO {
 		}
 		return cartModel;
 	}
-	
+	/**
+	 * 更新购物车的商品总价格
+	 * @param connection 链接
+	 * @param cartId 购物车id
+	 * @return 成功或失败
+	 * @throws SQLException
+	 */
 	public boolean updateCart(Connection connection,int cartId) throws SQLException{
 		CartModel cartModel = null;
 		PreparedStatement ps = null;
@@ -86,6 +94,11 @@ public class CartDAO {
 	
 	public static void main(String[] args) {
 		System.out.println(new CartDAO().addCart(19).getId());
+	}
+	@Override
+	public boolean updateCart(Session session, int cartId) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

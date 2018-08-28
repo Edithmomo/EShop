@@ -17,7 +17,7 @@ import org.ccunix.eshop.util.DBManager;
  * @author Edith
  * 
  */
-public class MemberDAO {
+public class MemberDAO implements MemberDAOIface{
 	/**
 	 * 通过用户名和密码查询用户信息
 	 * 

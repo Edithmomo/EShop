@@ -31,7 +31,7 @@
 	}
 </script>
   <body>
-   <jsp:useBean id="categoryDAO" class="org.ccunix.eshop.dao.CategoryDAO"></jsp:useBean>
+   <jsp:useBean id="categoryDAO" class="org.ccunix.eshop.dao.CategoryDAOByHibernateImpl"></jsp:useBean>
   <%
 		List<CategoryModel> categoryList = categoryDAO.getCategoryList();
 		 if (categoryList.size() > 0) {

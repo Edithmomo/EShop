@@ -1,5 +1,6 @@
+<%@page import="org.ccunix.eshop.dao.MerchandiseDAOByHibernate"%>
+<%@page import="org.ccunix.eshop.dao.MerchandiseDAOIface"%>
 <%@page import="org.ccunix.eshop.model.MerchandiseModel"%>
-<%@page import="org.ccunix.eshop.dao.MerchandiseDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="header.jsp" %>
@@ -20,14 +21,14 @@
             if(str_id == null){
             	response.sendRedirect("logOut.html");
             }else{
-            	MerchandiseDAO merchandiseDAO = new MerchandiseDAO();
-            	MerchandiseModel m = merchandiseDAO.getOneMerchandiseById(str_id);
+            	MerchandiseDAOIface merchandiseDAO = new MerchandiseDAOByHibernate();
+            	MerchandiseModel m = merchandiseDAO.getOneMerchandiseById(Integer.parseInt(str_id));
             	double merPrice = 0;
-            	if(m.getSpecial()==1){
+            	/* if(m.getSpecial() == 1){
 					  merPrice = m.getsPrice();
 				  }else{
 					  merPrice = m.getPrice();
-				  }
+				  } */
             	%> 
             	    <div class="X_center02"><img style="margin:0 10px 0 0;" src="/EShop<%=m.getPicture() %>" align="left">
          <font style="font-size: 15px;">商品类别：<%=m.getCateName() %><br>

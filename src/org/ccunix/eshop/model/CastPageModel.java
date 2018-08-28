@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.ccunix.eshop.dao.MerchandiseDAO;
+import org.ccunix.eshop.dao.MerchandiseDAOByHibernate;
+import org.ccunix.eshop.dao.MerchandiseDAOIface;
 
 public class CastPageModel {
 	/**
@@ -33,7 +35,7 @@ public class CastPageModel {
 	/**
 	 * 是否为特价
 	 */
-	private String special;
+	private int special;
 	/**
 	 * 查询的商品关键词
 	 */
@@ -41,94 +43,98 @@ public class CastPageModel {
 	/**
 	 * 查询的商品类型
 	 */
-	private String category;
+	private int category;
 	/**
 	 * 当前页面的商品数据集合
 	 */
 	private List<MerchandiseModel> currentList = new ArrayList<MerchandiseModel>();
-	
-	public CastPageModel(int nowPage, int everyPageNum, String special) {
+
+	public CastPageModel(int nowPage, int everyPageNum, int special) {
 		this.everyPageNum = everyPageNum;
 		this.nowPage = nowPage;
 		this.special = special;
 	}
-    
+
 	public CastPageModel(int everyPageNum, int nowPage, String qkey,
-			String category) {
+			int category) {
 		this.everyPageNum = everyPageNum;
 		this.nowPage = nowPage;
 		this.qkey = qkey;
 		this.category = category;
 	}
-    
+
 	/**
 	 * 生成商品当前页信息
 	 */
-	public void makePageData(){
-		MerchandiseDAO merchandiseDAO = new MerchandiseDAO();
-		List<MerchandiseModel> merchandiseModels = merchandiseDAO.getMerchandiseListBySpecial(this.special);
+	public void makePageData() {
+		MerchandiseDAOIface merchandiseDAO = new MerchandiseDAOByHibernate();
+		List<MerchandiseModel> merchandiseModels = merchandiseDAO
+				.getMerchandiseListBySpecial(this.special);
 		this.totalNum = merchandiseModels.size();
-		if(this.totalNum%this.everyPageNum == 0){
-			this.totalPageNum = this.totalNum/this.everyPageNum;
-		}else{
-			this.totalPageNum = this.totalNum/this.everyPageNum+1;
+		if (this.totalNum % this.everyPageNum == 0) {
+			this.totalPageNum = this.totalNum / this.everyPageNum;
+		} else {
+			this.totalPageNum = this.totalNum / this.everyPageNum + 1;
 		}
-		if(this.nowPage==1){
+		if (this.nowPage == 1) {
 			this.backPage = 1;
-		}else{
+		} else {
 			this.backPage = this.nowPage - 1;
 		}
-		if(this.nowPage==totalPageNum){
+		if (this.nowPage == totalPageNum) {
 			this.nextPage = totalPageNum;
-		}else{
+		} else {
 			this.nextPage = this.nowPage + 1;
 		}
 		/**
-		 * 1    0-4
-		 * 2    5-9
+		 * 1 0-4 2 5-9
 		 */
-		for(int i = (this.nowPage-1)*this.everyPageNum;i < (this.nowPage*this.everyPageNum) && i < this.totalNum; i++){
+		for (int i = (this.nowPage - 1) * this.everyPageNum; i < (this.nowPage * this.everyPageNum)
+				&& i < this.totalNum; i++) {
 			this.currentList.add(merchandiseModels.get(i));
 		}
 	}
-	
+
 	/**
 	 * 生成查询商品结果的当前页信息
 	 */
-	public void makePageSelectData(){
-		MerchandiseDAO merchandiseDAO = new MerchandiseDAO();
+	public void makePageSelectData() {
+		MerchandiseDAOIface merchandiseDAO = new MerchandiseDAOByHibernate();
 		List<MerchandiseModel> merchandiseModels = null;
-		if(this.qkey != "" && (this.category == null || category.equals("0"))){
-			merchandiseModels = merchandiseDAO.getMerchandiseListByQkey(this.qkey);
-		}else if(this.qkey == "" && category != null && !category.equals("0")){
-			merchandiseModels = merchandiseDAO.getMerchandiseListByCategory(this.category);
-		}else if(this.qkey == "" && category != null && category.equals("0")){
+		if (this.qkey != "" && category == 0) {
+			merchandiseModels = merchandiseDAO
+					.getMerchandiseListByQkey(this.qkey);
+		} else if (this.qkey == "" && category != 0) {
+			merchandiseModels = merchandiseDAO
+					.getMerchandiseListByCategory(this.category);
+		} else if (this.qkey == "" && category == 0) {
 			merchandiseModels = merchandiseDAO.getMerchandiseList();
-		}else if(this.qkey != "" && category != null && !category.equals("0")){
-			merchandiseModels = merchandiseDAO.getMerchandiseListBySelect(this.qkey, this.category);
+		} else if (this.qkey != "" && category != 0) {
+			merchandiseModels = merchandiseDAO.getMerchandiseListBySelect(
+					this.qkey, this.category);
 		}
 		this.totalNum = merchandiseModels.size();
-		if(this.totalNum%this.everyPageNum == 0){
-			this.totalPageNum = this.totalNum/this.everyPageNum;
-		}else{
-			this.totalPageNum = this.totalNum/this.everyPageNum+1;
+		if (this.totalNum % this.everyPageNum == 0) {
+			this.totalPageNum = this.totalNum / this.everyPageNum;
+		} else {
+			this.totalPageNum = this.totalNum / this.everyPageNum + 1;
 		}
-		if(this.nowPage==1){
+		if (this.nowPage == 1) {
 			this.backPage = 1;
-		}else{
+		} else {
 			this.backPage = this.nowPage - 1;
 		}
-		if(this.nowPage==totalPageNum){
+		if (this.nowPage == totalPageNum) {
 			this.nextPage = totalPageNum;
-		}else{
+		} else {
 			this.nextPage = this.nowPage + 1;
 		}
-		for(int i = (this.nowPage-1)*this.everyPageNum;i < (this.nowPage*this.everyPageNum) && i < this.totalNum; i++){
+		for (int i = (this.nowPage - 1) * this.everyPageNum; i < (this.nowPage * this.everyPageNum)
+				&& i < this.totalNum; i++) {
 			this.currentList.add(merchandiseModels.get(i));
 		}
 	}
-	
-	
+
 	public int getTotalNum() {
 		return totalNum;
 	}
@@ -153,15 +159,15 @@ public class CastPageModel {
 		return backPage;
 	}
 
-	public String getSpecial() {
+	public int getSpecial() {
 		return special;
 	}
-    
+
 	public String getQkey() {
 		return qkey;
 	}
 
-	public String getCategory() {
+	public int getCategory() {
 		return category;
 	}
 

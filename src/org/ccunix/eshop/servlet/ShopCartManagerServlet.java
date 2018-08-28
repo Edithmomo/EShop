@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.ccunix.eshop.dao.CartDAO;
-import org.ccunix.eshop.dao.CartSelectedmerDAO;
+import org.ccunix.eshop.dao.CartSelectedmerDAOByHibernateImpl;
+import org.ccunix.eshop.dao.CartSelectedmerDAOInface;
 import org.ccunix.eshop.model.CartModel;
 import org.ccunix.eshop.model.CartSelectedmerModel;
 import org.ccunix.eshop.model.MemberModel;
@@ -30,7 +30,7 @@ public class ShopCartManagerServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String method = req.getParameter("method");
 		boolean b = false;
-		CartSelectedmerDAO cartSelectedmerDAO = new CartSelectedmerDAO();
+		CartSelectedmerDAOInface cartSelectedmerDAO = new CartSelectedmerDAOByHibernateImpl();
 		int merId = -1;
 		int cartId = -1;
 		switch (method) {
@@ -45,9 +45,19 @@ public class ShopCartManagerServlet extends HttpServlet {
 			break;
 		case "delete":
 			System.out.println("删除商品。。。。。。。。。。。。");
-			merId = Integer.parseInt(req.getParameter("merId"));
 			cartId = Integer.parseInt(req.getParameter("cartId"));
-			b = cartSelectedmerDAO.deleteOneCartSelectedmer(merId, cartId);
+			String fun = req.getParameter("fun");
+			System.out.println("fun"+fun);
+			System.out.println("0".equals(fun)+"   0");
+			System.out.println("1".equals(fun)+"   1");
+			if("0".equals(fun)){
+				System.out.println("删除全部。。。。。。。。。。");
+				b = cartSelectedmerDAO.deleteAllCartSelectedmer(cartId);
+			}else{
+				System.out.println("删除部分。。。。。。。。。。");
+				merId = Integer.parseInt(req.getParameter("merId"));
+				b = cartSelectedmerDAO.deleteOneCartSelectedmer(merId, cartId);
+			}
 			break;
 		case "update":
 			System.out.println("修改商品。。。。。。。。。。。。");
@@ -113,7 +123,8 @@ public class ShopCartManagerServlet extends HttpServlet {
 		boolean f = false;
 		if (objCartModel != null) {
 			CartModel cartModel = (CartModel) objCartModel;
-			CartSelectedmerDAO cartSelectedmerDAO = new CartSelectedmerDAO();
+			CartSelectedmerDAOInface cartSelectedmerDAO = new CartSelectedmerDAOByHibernateImpl();
+			System.out.println(cartModel.getCartSelectedmerMap().containsKey(merId)+"------------------------------------------");
 			if (cartModel.getCartSelectedmerMap().containsKey(merId)) {
 				// 存在
 				String strNumber = req.getParameter("number");
@@ -124,12 +135,13 @@ public class ShopCartManagerServlet extends HttpServlet {
 					number = Integer.parseInt(strNumber);
 				}
 				f = cartSelectedmerDAO.updateCartSelectedmer(
-						cartModel.getId(), merId, number ,0);
+						cartModel.getId(), merId, number ,1);
 			} else {
 				if (special == 0) {
 					MemberModel memberModel = (MemberModel) session
 							.getAttribute("userInfo");
-					price = price * memberModel.getFavourable() * 0.01;
+					int favourable = Integer.parseInt(memberModel.getMemberLevelModel().getFavourable());
+					price = price *  0.01 * favourable;
 				}
 				f = cartSelectedmerDAO.addCartSelectedmer(
 						cartModel.getId(), merId, price);

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ 
+ <hibernate-mapping>
+   <class name="org.ccunix.eshop.model.MerchandiseModel" table="Merchandise">
+      <id name="id" column="ID" type="int"></id>
+      <property name="category" column="category" type="int"></property>
+      <property name="merName" column="merName" type="string"></property>
+      <property name="price" column="price" type="double"></property>
+      <property name="sPrice" column="sPrice" type="double"></property>
+      <property name="merModel" column="merModel" type="string"></property>
+      <property name="picture" column="picture" type="string"></property>
+      <property name="merDesc" column="merDesc" type="string"></property>
+      <property name="manufacturer" column="manufacturer" type="string"></property>
+      <property name="leaveFactoryDate" column="leaveFactoryDate" type="string"></property>
+      <property name="special" column="special" type="int"></property>
+      <many-to-one name="categoryModel" lazy="false" fetch="join" class="org.ccunix.eshop.model.CategoryModel" insert="false" update="false">
+        <column name="category"></column>
+      </many-to-one>
+   </class>
+ </hibernate-mapping>
